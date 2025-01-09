@@ -1,0 +1,22 @@
+int columnWithMaxZeros(vector<vector<int>>arr,int N){
+        int max = -1;  
+        int index = -1;  
+
+        for (int j = 0; j < N; j++) {
+            int zeroCount = 0; 
+            for (int i = 0; i < N; i++) {
+                if (arr[i][j] == 0) {
+                    zeroCount++;
+                }
+            }
+            
+            if (zeroCount > max) {
+                max = zeroCount;
+                index = j;
+            }
+        }
+
+        return (max == 0) ? -1 : index;
+        
+        
+    }
