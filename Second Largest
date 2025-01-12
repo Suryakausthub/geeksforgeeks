@@ -1,0 +1,21 @@
+
+class Solution {
+  public:
+    // Function returns the second
+    // largest elements
+    int getSecondLargest(vector<int> &arr) {
+        int largest = -1, secondLargest = -1;
+    
+    for (int num : arr) {
+        if (num > largest) {
+            secondLargest = largest;
+            largest = num;
+        } else if (num > secondLargest && num < largest) {
+            secondLargest = num;
+        }
+    }
+    
+    return secondLargest;
+    }
+};
+
