@@ -1,0 +1,26 @@
+unordered_map <char,int>mp;
+        for(char ch:s){
+            mp[ch]++;
+        }
+        unordered_map <int,int>count;
+        for(const auto &it : mp){
+            count[it.second]++;
+        }
+        
+        if(count.size()==1){
+            return true;
+        }
+        else if(count.size()==2){
+            auto itr= count.begin();
+            int freq1= itr-> first;
+            int count1= itr-> second;
+            ++itr;
+            int freq2= itr-> first;
+            int count2= itr-> second;
+            if((count1 ==1 && (freq1 == 1|| freq1 - freq2==1))
+            ||(count2 ==1 && (freq2 == 1|| freq2 - freq1==1))){
+                return true;
+            }
+        }
+        
+       return false;
