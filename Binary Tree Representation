@@ -1,0 +1,25 @@
+class Solution{
+public:
+    void create_tree(node* root, vector<int>& vec) {
+        build_tree(root, vec, 0);
+    }
+
+private:
+    void build_tree(node* root, vector<int>& vec, int index) {
+        if (root == nullptr || index >= vec.size()) return;
+
+        int left_index = 2 * index + 1;
+        int right_index = 2 * index + 2;
+
+        if (left_index < vec.size()) {
+            root->left = newNode(vec[left_index]);
+            build_tree(root->left, vec, left_index);
+        }
+
+        if (right_index < vec.size()) {
+            root->right = newNode(vec[right_index]);
+            build_tree(root->right, vec, right_index);
+        }
+    }
+};
+
