@@ -1,0 +1,57 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution
+{
+    public:
+        int maxOnes (vector <vector <int>> &Mat, int N, int M)
+        {
+            int maxRow = -1; 
+    int maxCount = -1; 
+    
+    for (int i = 0; i < N; i++) {
+        int low = 0, high = M - 1;
+        int firstOne = M;  
+        
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (Mat[i][mid] == 1) {
+                firstOne = mid;
+                high = mid - 1; 
+            } else {
+                low = mid + 1; 
+            }
+        }
+
+        int countOnes = M - firstOne;
+        
+        if (countOnes > maxCount) {
+            maxCount = countOnes;
+            maxRow = i;
+        }
+    }
+
+    return maxRow;
+        }
+};
+
+//{ Driver Code Starts.
+
+int main(){
+    int t; cin >> t;
+    while (t--){
+        int n, m; cin >> n >> m;
+        vector <vector <int>> arr (n, vector <int> (m));
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                cin >> arr[i][j];
+        Solution ob;        
+        cout << ob.maxOnes(arr, n, m) << endl;
+    
+cout << "~" << "\n";
+}
+}
+// } Driver Code Ends
