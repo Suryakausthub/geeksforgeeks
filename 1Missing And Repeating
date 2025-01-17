@@ -1,0 +1,22 @@
+int n = arr.size();
+    int repeated, missing;
+
+    // Iterate over the array and mark the visited indices
+    for (int i = 0; i < n; i++) {
+        int index = abs(arr[i]) - 1; // Get the index corresponding to the value
+        if (arr[index] < 0) {
+            repeated = abs(arr[i]); // If already marked, it's the repeated number
+        } else {
+            arr[index] = -arr[index]; // Mark the index as visited
+        }
+    }
+
+    // Find the missing number
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > 0) {
+            missing = i + 1; // The index + 1 is the missing number
+            break;
+        }
+    }
+
+    return {repeated, missing};
